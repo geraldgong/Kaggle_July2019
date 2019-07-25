@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
 import os
@@ -9,8 +8,12 @@ from tqdm import tqdm
 class PrepareData:
 
     def __init__(self):
-        self.filepath = "/home/gong/Documents/Kaggle_July2019"
-        self.dir_out = "/home/gong/Documents/Kaggle_July2019/output"
+        if 'ygong' in os.getcwd():
+            self.filepath = "../data"
+            self.dir_out = "../data/output"
+        else:
+            self.filepath = "/home/gong/Documents/Kaggle_July2019"
+            self.dir_out = "/home/gong/Documents/Kaggle_July2019/output"
 
     def load_data(self):
         train = pd.read_csv(os.path.join(self.filepath, 'train.csv'))
@@ -31,12 +34,12 @@ class PrepareData:
         ################################################################################################################
         # randomly take 10% of data for fast evaluation
         # Get only 10% of dataset for fast evaluation!
-        size = round(0.10 * train.shape[0])
-        train = train[:size]
-        test = test[:size]
-        submit = submit[:size]
-        structures = structures[:size]
-        scalar_coupling_contributions = scalar_coupling_contributions[:size]
+        # size = round(0.10 * train.shape[0])
+        # train = train[:size]
+        # test = test[:size]
+        # submit = submit[:size]
+        # structures = structures[:size]
+        # scalar_coupling_contributions = scalar_coupling_contributions[:size]
 
         print('Train dataset shape is now rows: {} cols:{}'.format(train.shape[0], train.shape[1]))
         print('Test dataset shape is now rows: {} cols:{}'.format(test.shape[0], test.shape[1]))
@@ -137,7 +140,7 @@ class PrepareData:
         bond_df = pd.DataFrame(bond_data)
         structures = structures.join(bond_df)
         # save data
-        # structures.to_csv(os.path.join(self.filepath, 'molecular_structure.csv'))
+        structures.to_csv(os.path.join(self.filepath, 'molecular_structure.csv'))
 
         return structures
 
@@ -184,11 +187,11 @@ class PrepareData:
         train = self.encode_categoric_single(train)
         test = self.encode_categoric_single(test)
 
-        train.to_csv(os.path.join(self.dir_out, "_train.csv"))
+        train.to_csv(os.path.join(self.dir_out, "_train.csv"), index=False)
         print("Saved training dataset to {}".format(os.path.join(self.dir_out, "_train.csv")))
 
         test.to_csv(os.path.join(self.dir_out, "_test.csv"))
-        print("Saved test dataset to {}".format(os.path.join(self.dir_out, "_test.csv")))
+        print("Saved test dataset to {}".format(os.path.join(self.dir_out, "_test.csv"), index=False))
 
 
 if __name__ == "__main__":
