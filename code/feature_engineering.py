@@ -190,8 +190,8 @@ class PrepareData:
         train.to_csv(os.path.join(self.dir_out, "_train.csv"), index=False)
         print("Saved training dataset to {}".format(os.path.join(self.dir_out, "_train.csv")))
 
-        test.to_csv(os.path.join(self.dir_out, "_test.csv"))
-        print("Saved test dataset to {}".format(os.path.join(self.dir_out, "_test.csv"), index=False))
+        test.to_csv(os.path.join(self.dir_out, "_test.csv"), index=False)
+        print("Saved test dataset to {}".format(os.path.join(self.dir_out, "_test.csv")))
 
 
 if __name__ == "__main__":
