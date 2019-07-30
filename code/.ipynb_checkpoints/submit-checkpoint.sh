@@ -1,1 +1,3 @@
-kaggle competitions submit -c champs-scalar-coupling -f /home/ygong/Documents/Kaggle_July2019/data/output/submission_2.csv -m "all_train_data" 
+# kaggle competitions submit -c champs-scalar-coupling -f /home/ygong/Documents/Kaggle_July2019/output/submission.csv -m "J-coupling submission" 
+
+kaggle competitions submit -c champs-scalar-coupling -f /home/gong/Documents/Kaggle_July2019/output/submission.csv -m "J-coupling submission" 

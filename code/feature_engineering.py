@@ -12,7 +12,7 @@ class PrepareData:
             self.filepath = "../data"
             self.dir_out = "../data/output"
         else:
-            self.filepath = "/home/gong/Documents/Kaggle_July2019"
+            self.filepath = "/home/gong/Documents/Kaggle_July2019/data"
             self.dir_out = "/home/gong/Documents/Kaggle_July2019/output"
 
     def load_data(self):
