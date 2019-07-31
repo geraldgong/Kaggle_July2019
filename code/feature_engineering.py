@@ -181,7 +181,7 @@ class PrepareData:
         test = self.map_atom_info(test, 1, structures)
 
         del_cols_list = ['id', 'molecule_name', 'sd', 'pso', 'dso']
-        train = self.del_cols(train, del_cols_list)
+        train = self.del_cols(train, del_cols_list+['fc'])
         test = self.del_cols(test, del_cols_list)
 
         train = self.encode_categoric_single(train)
